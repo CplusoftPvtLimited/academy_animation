@@ -1,95 +1,53 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import { useRouter } from "next/navigation";
+import React from "react";
+import { Button, Container } from "react-bootstrap";
+import Image from "next/image";
 
-export default function Home() {
+const page = () => {
+  const router = useRouter();
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <>
+      <div style={{ position: "absolute", width: "100%" }}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src="/payment_2.jpg"
+          alt="iamge"
+          width={800}
+          height={800}
+          style={{ width: "100%" }}
         />
       </div>
+      <Container id="container">
+        <div id="form_submission">
+          <h1 style={{ fontSize: 48, marginBottom: 20, color: "#fff" }}>
+            Payment Methods
+          </h1>
+          <Button
+            variant={"primary"}
+            style={{ marginTop: 15 }}
+            onClick={() => router.push("http://localhost:3000/stripe")}
+          >
+            Stripe
+          </Button>
+          <Button
+            variant={"success"}
+            style={{ marginTop: 15 }}
+            onClick={() => router.push("http://localhost:3000/crypto")}
+          >
+            Crypto
+          </Button>
+          <Button
+            variant={"warning"}
+            style={{ marginTop: 15 }}
+            onClick={() => router.push("http://localhost:3000/wireTransfer")}
+          >
+            WireTransfer
+          </Button>
+        </div>
+      </Container>
+    </>
+  );
+};
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default page;
